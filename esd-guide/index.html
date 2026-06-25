@@ -7,35 +7,134 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background: #0D0D0D;
-      color: #E8E8E8;
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-      padding: 48px 20px 80px;
+    body.dark {
+      --bg: #0D0D0D;
+      --bg-card: #111111;
+      --border: #1E1E1E;
+      --text-primary: #E8E8E8;
+      --text-second: #555555;
+      --text-third: #383838;
+      --divider: #1E1E1E;
+      --icon-bg: #130000;
+      --icon-border: #3A0000;
+      --shield-color: #E8E8E8;
     }
 
+    body.light {
+      --bg: #F5F4F0;
+      --bg-card: #FFFFFF;
+      --border: #E3E1DB;
+      --text-primary: #111111;
+      --text-second: #888888;
+      --text-third: #BBBBBB;
+      --divider: #DDDBD5;
+      --icon-bg: #FDF2F2;
+      --icon-border: #E8BFBF;
+      --shield-color: #111111;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding-bottom: 80px;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    /* TOPBAR */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: background 0.35s, border-color 0.35s;
+    }
+
+    .topbar-brand {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-third);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mode-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-third);
+      letter-spacing: 0.06em;
+      user-select: none;
+    }
+
+    .toggle-pill {
+      width: 48px;
+      height: 26px;
+      background: #A32020;
+      border-radius: 13px;
+      position: relative;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      flex-shrink: 0;
+    }
+
+    .toggle-pill:focus-visible {
+      box-shadow: 0 0 0 2px #A32020, 0 0 0 4px var(--bg);
+    }
+
+    .toggle-pill::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+
+    body.light .toggle-pill::after {
+      transform: translateX(22px);
+    }
+
+    /* LAYOUT */
     .wrap {
       max-width: 600px;
       margin: 0 auto;
+      padding: 48px 20px 0;
     }
 
-    /* NAV */
     .back {
       display: inline-block;
       font-size: 12px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #555;
+      color: var(--text-second);
       text-decoration: none;
       margin-bottom: 40px;
     }
     .back:hover { color: #A32020; }
 
-    /* HEADER */
     .site-label {
       font-size: 11px;
       letter-spacing: 0.16em;
@@ -47,7 +146,7 @@
     h1 {
       font-size: 32px;
       font-weight: 600;
-      color: #E8E8E8;
+      color: var(--text-primary);
       line-height: 1.2;
     }
 
@@ -60,7 +159,7 @@
 
     .subtitle {
       font-size: 14px;
-      color: #888;
+      color: var(--text-second);
       line-height: 1.6;
       margin-bottom: 48px;
     }
@@ -74,47 +173,54 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #555;
+      color: var(--text-second);
       margin-bottom: 20px;
       padding-bottom: 10px;
-      border-bottom: 1px solid #1A1A1A;
+      border-bottom: 0.5px solid var(--divider);
     }
 
-    /* HOW IT HAPPENS */
-    .step {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .step-num {
+    /* ICON CONTAINER (mechanism steps, gear cards) */
+    .icon-box {
       flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      border: 1px solid #A32020;
-      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      background: var(--icon-bg);
+      border: 1px solid var(--icon-border);
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
+      transition: background 0.35s, border-color 0.35s;
+    }
+
+    .icon-box i {
+      font-size: 20px;
       color: #A32020;
-      margin-top: 2px;
+    }
+
+    /* MECHANISM STEPS */
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
     }
 
     .step-body h3 {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
-      color: #E8E8E8;
+      color: var(--text-primary);
       margin-bottom: 5px;
+      margin-top: 4px;
     }
 
     .step-body p {
       font-size: 13px;
-      color: #777;
+      color: var(--text-second);
       line-height: 1.6;
     }
 
-    /* NUMBERS */
+    /* STATS GRID */
     .stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -122,10 +228,22 @@
     }
 
     .stat-card {
-      background: #111111;
-      border: 1px solid #1E1E1E;
-      border-radius: 4px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
       padding: 20px 18px;
+      transition: background 0.35s, border-color 0.35s;
+    }
+
+    .stat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .stat-header i {
+      font-size: 18px;
     }
 
     .stat-value {
@@ -133,77 +251,121 @@
       font-weight: 600;
       color: #A32020;
       line-height: 1;
-      margin-bottom: 8px;
+    }
+
+    .stat-value-sm {
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.2;
     }
 
     .stat-label {
       font-size: 12px;
-      color: #666;
+      color: var(--text-second);
       line-height: 1.5;
     }
 
-    /* WARNING SIGNS */
-    .warning-intro {
-      background: #1A0A0A;
+    /* WARNING BANNER */
+    .warning-banner {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--icon-bg);
       border-left: 3px solid #A32020;
+      border-radius: 0 8px 8px 0;
       padding: 16px 18px;
       margin-bottom: 20px;
+      transition: background 0.35s;
+    }
+
+    .warning-banner i {
+      font-size: 22px;
+      color: #A32020;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .warning-banner-body strong {
+      display: block;
       font-size: 13px;
-      color: #C0C0C0;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 5px;
+    }
+
+    .warning-banner-body p {
+      font-size: 13px;
+      color: var(--text-second);
       line-height: 1.6;
     }
 
+    /* SIGNAL CARDS */
     .signal {
       display: flex;
       gap: 14px;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       align-items: flex-start;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      transition: background 0.35s, border-color 0.35s;
     }
 
-    .signal-tag {
-      flex-shrink: 0;
-      font-size: 9px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+    .signal i {
+      font-size: 20px;
       color: #A32020;
-      background: #1A0A0A;
-      border: 1px solid #A32020;
-      padding: 3px 7px;
-      border-radius: 2px;
-      margin-top: 2px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .signal-body {
+      flex: 1;
     }
 
     .signal-body h4 {
       font-size: 14px;
       font-weight: 600;
-      color: #E8E8E8;
+      color: var(--text-primary);
       margin-bottom: 4px;
     }
 
     .signal-body p {
       font-size: 13px;
-      color: #777;
+      color: var(--text-second);
       line-height: 1.55;
     }
 
-    /* PROTOCOL */
+    /* PROTOCOL ITEMS */
     .protocol-item {
-      border: 1px solid #1E1E1E;
-      border-radius: 4px;
-      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
       margin-bottom: 10px;
+      background: var(--bg-card);
+      transition: background 0.35s, border-color 0.35s;
     }
 
-    .protocol-item h4 {
+    .protocol-item i {
+      font-size: 20px;
+      color: #A32020;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .protocol-body h4 {
       font-size: 14px;
       font-weight: 600;
-      color: #E8E8E8;
-      margin-bottom: 6px;
+      color: var(--text-primary);
+      margin-bottom: 4px;
     }
 
-    .protocol-item p {
+    .protocol-body p {
       font-size: 13px;
-      color: #777;
+      color: var(--text-second);
       line-height: 1.55;
     }
 
@@ -211,44 +373,142 @@
     .action {
       display: flex;
       gap: 14px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       align-items: flex-start;
     }
 
-    .action-num {
-      flex-shrink: 0;
-      font-size: 10px;
-      letter-spacing: 0.1em;
+    .action i {
+      font-size: 20px;
       color: #A32020;
-      margin-top: 3px;
-      min-width: 48px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      width: 24px;
+      text-align: center;
     }
 
     .action-body h4 {
       font-size: 14px;
       font-weight: 600;
-      color: #E8E8E8;
+      color: var(--text-primary);
       margin-bottom: 4px;
     }
 
     .action-body p {
       font-size: 13px;
-      color: #777;
+      color: var(--text-second);
       line-height: 1.55;
     }
 
-    /* SHARE */
+    /* EXTERNAL LINK CARDS (resources, gear) */
+    .ext-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.35s ease, background 0.35s ease;
+    }
+
+    .ext-card:hover {
+      border-color: #A32020;
+    }
+
+    .ext-card:active {
+      opacity: 0.75;
+    }
+
+    .ext-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .ext-label {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A32020;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .ext-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.3;
+    }
+
+    .ext-desc {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--text-second);
+      line-height: 1.5;
+    }
+
+    .ext-arrow {
+      flex-shrink: 0;
+      color: #A32020;
+      opacity: 0.7;
+    }
+
+    .ext-arrow i {
+      font-size: 18px;
+    }
+
+    /* YouTube icon box */
+    .yt-icon-box {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      background: #A32020;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .yt-icon-box i {
+      font-size: 24px;
+      color: #ffffff;
+    }
+
+    /* Channel note / affiliate note */
+    .note-text {
+      font-size: 12px;
+      color: var(--text-third);
+      font-style: italic;
+      padding: 0 2px;
+      margin-top: 10px;
+      line-height: 1.55;
+    }
+
+    .affiliate-note {
+      font-size: 11px;
+      color: var(--text-third);
+      font-style: italic;
+      margin-top: 10px;
+      padding: 0 2px;
+      line-height: 1.5;
+    }
+
+    /* SHARE BLOCK */
     .share-block {
-      background: #111111;
-      border: 1px solid #1E1E1E;
-      border-radius: 4px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
       padding: 28px 24px;
       text-align: center;
+      transition: background 0.35s, border-color 0.35s;
     }
 
     .share-block p {
       font-size: 14px;
-      color: #888;
+      color: var(--text-second);
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -271,21 +531,36 @@
 
     .share-btn:hover { background: #8a1a1a; }
 
-    /* FOOTER */
     footer {
       margin-top: 64px;
       font-size: 12px;
-      color: #444;
+      color: var(--text-second);
       text-align: center;
     }
 
     footer strong {
-      color: #666;
+      color: var(--text-second);
       font-weight: 500;
     }
   </style>
 </head>
-<body>
+<body class="dark">
+
+  <div class="topbar">
+    <span class="topbar-brand">Alec Voss</span>
+    <div class="topbar-right">
+      <span class="mode-label" id="mode-lbl">Dark</span>
+      <button
+        class="toggle-pill"
+        id="toggle"
+        onclick="switchMode()"
+        aria-label="Switch between dark and light mode"
+        role="switch"
+        aria-checked="false">
+      </button>
+    </div>
+  </div>
+
   <div class="wrap">
 
     <a class="back" href="../">← Alec Voss</a>
@@ -300,7 +575,7 @@
       <div class="section-label">How it happens</div>
 
       <div class="step">
-        <div class="step-num">1</div>
+        <div class="icon-box"><i class="ti ti-plug-connected"></i></div>
         <div class="step-body">
           <h3>A faulty dock leaks AC current into the water</h3>
           <p>Wiring faults or improperly grounded generators send alternating current into the water around docks and marinas. No sound. No visible sign. No smell.</p>
@@ -308,7 +583,7 @@
       </div>
 
       <div class="step">
-        <div class="step-num">2</div>
+        <div class="icon-box"><i class="ti ti-ripple"></i></div>
         <div class="step-body">
           <h3>Fresh water holds the current invisibly</h3>
           <p>Unlike salt water, fresh water conducts at a level enough to paralyze muscles. The field radiates outward — strongest near the dock, weakening with distance.</p>
@@ -316,7 +591,7 @@
       </div>
 
       <div class="step">
-        <div class="step-num">3</div>
+        <div class="icon-box"><i class="ti ti-bolt"></i></div>
         <div class="step-body">
           <h3>A swimmer enters the field and can no longer move</h3>
           <p>As little as 3 volts per foot causes skeletal muscle paralysis. Arms stop. Legs stop. Cannot call for help. They sink. Cause of death on the paperwork: drowning.</p>
@@ -328,22 +603,39 @@
     <div class="section">
       <div class="section-label">The numbers</div>
       <div class="stats-grid">
+
         <div class="stat-card">
+          <div class="stat-header">
+            <i class="ti ti-bolt" style="color:#A32020;"></i>
+          </div>
           <div class="stat-value">3V</div>
           <div class="stat-label">Volts per foot to paralyze a swimmer in fresh water</div>
         </div>
+
         <div class="stat-card">
+          <div class="stat-header">
+            <i class="ti ti-alert-triangle" style="color:#A32020;"></i>
+          </div>
           <div class="stat-value">22V</div>
           <div class="stat-label">Found in a Lake Lanier dock in 2019. No warning. Family arriving the following weekend.</div>
         </div>
+
         <div class="stat-card">
-          <div class="stat-value" style="font-size:16px; padding-top:4px;">EU · Australia<br>New Zealand</div>
+          <div class="stat-header">
+            <i class="ti ti-shield-check" id="shield-icon" style="color: var(--shield-color);"></i>
+          </div>
+          <div class="stat-value-sm" style="color: var(--text-primary);">EU · Australia<br>New Zealand</div>
           <div class="stat-label" style="margin-top:8px;">0 ESD deaths in 30 years. Ground-fault standard — mandatory.</div>
         </div>
+
         <div class="stat-card">
-          <div class="stat-value" style="font-size:16px; padding-top:4px;">United<br>States</div>
+          <div class="stat-header">
+            <i class="ti ti-question-mark" style="color:#A32020;"></i>
+          </div>
+          <div class="stat-value-sm" style="color: var(--text-primary);">United<br>States</div>
           <div class="stat-label" style="margin-top:8px;">No national database. Deaths filed as drowning.</div>
         </div>
+
       </div>
     </div>
 
@@ -351,13 +643,16 @@
     <div class="section">
       <div class="section-label">Warning signs</div>
 
-      <div class="warning-intro">
-        <strong style="color:#E8E8E8;">Act on this immediately</strong><br>
-        Any tingling, burning, or sudden muscle weakness near a dock is a possible ESD field. Most people swim toward the ladder. This is exactly wrong. Moving toward the source moves you deeper into the field.
+      <div class="warning-banner">
+        <i class="ti ti-alert-octagon"></i>
+        <div class="warning-banner-body">
+          <strong>Act on this immediately</strong>
+          <p>Any tingling, burning, or sudden muscle weakness near a dock is a possible ESD field. Most people swim toward the ladder. This is exactly wrong. Moving toward the source moves you deeper into the field.</p>
+        </div>
       </div>
 
       <div class="signal">
-        <div class="signal-tag">Signal 01</div>
+        <i class="ti ti-hand-stop"></i>
         <div class="signal-body">
           <h4>Tingling in hands, feet, or legs</h4>
           <p>Not cold numbness. A distinct electrical sensation. Get out immediately.</p>
@@ -365,7 +660,7 @@
       </div>
 
       <div class="signal">
-        <div class="signal-tag">Signal 02</div>
+        <i class="ti ti-run"></i>
         <div class="signal-body">
           <h4>Sudden muscle weakness</h4>
           <p>Arms or legs feel heavy. Not fatigue. An abrupt loss of limb control.</p>
@@ -373,7 +668,7 @@
       </div>
 
       <div class="signal">
-        <div class="signal-tag">Signal 03</div>
+        <i class="ti ti-man"></i>
         <div class="signal-body">
           <h4>Swimmer in distress near dock</h4>
           <p>Rigid body in water. Do not jump in. Shut off power first.</p>
@@ -381,7 +676,7 @@
       </div>
 
       <div class="signal">
-        <div class="signal-tag">Signal 04</div>
+        <i class="ti ti-fish"></i>
         <div class="signal-body">
           <h4>Fish kills near a dock</h4>
           <p>Fish floating with no explanation. ESD fields affect fish before humans.</p>
@@ -394,28 +689,43 @@
       <div class="section-label">Swimmer safety protocol</div>
 
       <div class="protocol-item">
-        <h4>Feel tingling — swim parallel, not toward</h4>
-        <p>Exit the field by swimming parallel to the dock and away. Do not grab the ladder. Call for someone on shore to cut the power first.</p>
+        <i class="ti ti-arrows-left-right"></i>
+        <div class="protocol-body">
+          <h4>Feel tingling — swim parallel, not toward</h4>
+          <p>Exit the field by swimming parallel to the dock and away. Do not grab the ladder. Call for someone on shore to cut the power first.</p>
+        </div>
       </div>
 
       <div class="protocol-item">
-        <h4>Someone in distress — cut the power first</h4>
-        <p>Do not enter the water. Find the power disconnect box and shut it off. Then go in. The rescuer at Lake Lanier felt the current — he survived because he cut the power first.</p>
+        <i class="ti ti-switch"></i>
+        <div class="protocol-body">
+          <h4>Someone in distress — cut the power first</h4>
+          <p>Do not enter the water. Find the power disconnect box and shut it off. Then go in. The rescuer at Lake Lanier felt the current — he survived because he cut the power first.</p>
+        </div>
       </div>
 
       <div class="protocol-item">
-        <h4>Before swimming — find the power box</h4>
-        <p>Locate the main power disconnect before anyone gets in. Point it out to one person who stays on shore. The single most important step.</p>
+        <i class="ti ti-map-pin"></i>
+        <div class="protocol-body">
+          <h4>Before swimming — find the power box</h4>
+          <p>Locate the main power disconnect before anyone gets in. Point it out to one person who stays on shore. The single most important step.</p>
+        </div>
       </div>
 
       <div class="protocol-item">
-        <h4>Never swim alone near docks</h4>
-        <p>An ESD victim cannot call for help. One person on shore is the only rescue mechanism available.</p>
+        <i class="ti ti-users"></i>
+        <div class="protocol-body">
+          <h4>Never swim alone near docks</h4>
+          <p>An ESD victim cannot call for help. One person on shore is the only rescue mechanism available.</p>
+        </div>
       </div>
 
       <div class="protocol-item">
-        <h4>Swim only in designated zones</h4>
-        <p>Distance from powered infrastructure is your primary protection. At Lake Lanier, use only Army Corps designated swim areas.</p>
+        <i class="ti ti-swimming"></i>
+        <div class="protocol-body">
+          <h4>Swim only in designated zones</h4>
+          <p>Distance from powered infrastructure is your primary protection. At Lake Lanier, use only Army Corps designated swim areas.</p>
+        </div>
       </div>
     </div>
 
@@ -424,7 +734,7 @@
       <div class="section-label">For dock owners</div>
 
       <div class="action">
-        <div class="action-num">Action 01</div>
+        <i class="ti ti-device-watch"></i>
         <div class="action-body">
           <h4>Install a ShockIQ monitoring device</h4>
           <p>$300–$500 installed. Alarms if voltage is detected in dock water.</p>
@@ -432,7 +742,7 @@
       </div>
 
       <div class="action">
-        <div class="action-num">Action 02</div>
+        <i class="ti ti-circuit-switch-closed"></i>
         <div class="action-body">
           <h4>Install ground-fault circuit interrupters</h4>
           <p>ABYC-certified electrician. GFCIs on all dock power pedestals.</p>
@@ -440,7 +750,7 @@
       </div>
 
       <div class="action">
-        <div class="action-num">Action 03</div>
+        <i class="ti ti-calendar-check"></i>
         <div class="action-body">
           <h4>Annual electrical inspection</h4>
           <p>Wiring degrades. No mandatory inspection exists in most US states.</p>
@@ -448,12 +758,105 @@
       </div>
 
       <div class="action">
-        <div class="action-num">Action 04</div>
+        <i class="ti ti-sign-right"></i>
         <div class="action-body">
           <h4>Post a disconnect sign</h4>
           <p>Power disconnect must be clearly labelled and visible. Not locked.</p>
         </div>
       </div>
+    </div>
+
+    <!-- SECTION A: CHECK BEFORE YOU GO -->
+    <div class="section">
+      <div class="section-label">Check before you go</div>
+
+      <a class="ext-card"
+         href="https://water.usace.army.mil/overview/sam/locations/buford"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-box"><i class="ti ti-droplet"></i></div>
+        <div class="ext-body">
+          <div class="ext-title">Buford Dam — Current Water Level</div>
+          <div class="ext-desc">Army Corps of Engineers · Updated daily. Check before visiting Lake Lanier — dam releases change current patterns and underwater hazard depths without notice.</div>
+        </div>
+        <div class="ext-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+    </div>
+
+    <!-- SECTION B: THE FULL DOCUMENTARY -->
+    <div class="section">
+      <div class="section-label">The full documentary</div>
+
+      <div>
+        <a class="ext-card"
+           href="https://youtube.com/@AlecVoss"
+           target="_blank"
+           rel="noopener noreferrer">
+          <div class="yt-icon-box"><i class="ti ti-brand-youtube"></i></div>
+          <div class="ext-body">
+            <div class="ext-label">Watch on YouTube</div>
+            <div class="ext-title">Why Lake Lanier Is More Dangerous Than You Think</div>
+            <div class="ext-desc">The full 35-minute documentary. Every case. Every statistic. The story behind this safety guide.</div>
+          </div>
+          <div class="ext-arrow"><i class="ti ti-arrow-up-right"></i></div>
+        </a>
+        <p class="note-text">Received this guide from someone? The channel covers one dangerous location every week — documented deaths, verified facts, the story the tourism industry doesn't tell you.</p>
+      </div>
+    </div>
+
+    <!-- SECTION C: SAFETY GEAR -->
+    <div class="section">
+      <div class="section-label">Safety gear</div>
+
+      <a class="ext-card"
+         href="https://amzn.to/4eCV9A5"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-box"><i class="ti ti-shopping-bag"></i></div>
+        <div class="ext-body">
+          <div class="ext-title">Stearns Type III Life Jacket</div>
+          <div class="ext-desc">USCG Approved · Adult · The life jacket the Georgia DNR data says could have saved lives.</div>
+        </div>
+        <div class="ext-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="ext-card"
+         href="https://amzn.to/43VRl8c"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-box"><i class="ti ti-shopping-bag"></i></div>
+        <div class="ext-body">
+          <div class="ext-title">Type IV Throwable Flotation Device</div>
+          <div class="ext-desc">Required on all US motorised vessels · Throw to a swimmer in distress from shore.</div>
+        </div>
+        <div class="ext-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="ext-card"
+         href="https://amzn.to/44vgqae"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-box"><i class="ti ti-shopping-bag"></i></div>
+        <div class="ext-body">
+          <div class="ext-title">Blue Sea Systems Marine GFCI Outlet</div>
+          <div class="ext-desc">Marine-grade · ABYC compliant · The correct GFCI for dock electrical protection.</div>
+        </div>
+        <div class="ext-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <a class="ext-card"
+         href="https://amzn.to/4w8aboA"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-box"><i class="ti ti-shopping-bag"></i></div>
+        <div class="ext-body">
+          <div class="ext-title">Klein Tools RT250KIT Voltage Tester</div>
+          <div class="ext-desc">Non-contact tester + GFCI outlet tester · What licensed electricians use to check dock wiring.</div>
+        </div>
+        <div class="ext-arrow"><i class="ti ti-arrow-up-right"></i></div>
+      </a>
+
+      <p class="affiliate-note">Amazon affiliate links. If you purchase through these links I may earn a small commission at no extra cost to you.</p>
     </div>
 
     <!-- SHARE -->
@@ -477,5 +880,46 @@
     </footer>
 
   </div>
+
+  <script>
+  function switchMode() {
+    const isDark = document.body.classList.contains('dark');
+    document.body.classList.toggle('dark', !isDark);
+    document.body.classList.toggle('light', isDark);
+    document.getElementById('mode-lbl').textContent =
+      isDark ? 'Light' : 'Dark';
+    document.getElementById('toggle')
+      .setAttribute('aria-checked', isDark ? 'true' : 'false');
+    const shield = document.getElementById('shield-icon');
+    if (shield) shield.style.color = isDark ? '#111111' : '#E8E8E8';
+    try {
+      localStorage.setItem('av-mode', isDark ? 'light' : 'dark');
+    } catch(e) {}
+  }
+
+  (function() {
+    try {
+      const saved = localStorage.getItem('av-mode');
+      if (saved === 'light') {
+        document.body.classList.replace('dark', 'light');
+        const lbl = document.getElementById('mode-lbl');
+        const tog = document.getElementById('toggle');
+        if (lbl) lbl.textContent = 'Light';
+        if (tog) tog.setAttribute('aria-checked', 'true');
+        const shield = document.getElementById('shield-icon');
+        if (shield) shield.style.color = '#111111';
+      }
+    } catch(e) {}
+  })();
+
+  document.getElementById('toggle')
+    .addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        switchMode();
+      }
+    });
+  </script>
+
 </body>
 </html>

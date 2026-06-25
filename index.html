@@ -39,7 +39,7 @@
       transition: background 0.35s ease, color 0.35s ease;
     }
 
-    /* ── TOPBAR ── */
+    /* TOPBAR */
     .topbar {
       position: sticky;
       top: 0;
@@ -110,7 +110,7 @@
       transform: translateX(22px);
     }
 
-    /* ── LAYOUT ── */
+    /* LAYOUT */
     .wrap {
       max-width: 600px;
       margin: 0 auto;
@@ -143,7 +143,6 @@
       margin: 14px 0 0;
     }
 
-    /* ── SECTION LABELS ── */
     .section-label {
       font-size: 11px;
       letter-spacing: 0.14em;
@@ -154,171 +153,54 @@
       border-bottom: 0.5px solid var(--divider);
     }
 
-    .section {
-      margin-bottom: 40px;
-    }
-
-    /* ── ORIGINAL GUIDE CARDS ── */
-    .card {
-      display: block;
-      background: var(--bg-card);
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 22px 24px;
-      margin-bottom: 12px;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.35s ease, background 0.35s ease;
-    }
-
-    .card:hover {
-      border-color: #A32020;
-    }
-
-    .card:active {
-      opacity: 0.75;
-    }
-
-    .card-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #A32020;
-      margin-bottom: 8px;
-    }
-
-    .card-title {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.3;
-    }
-
-    .card-desc {
-      margin-top: 6px;
-      font-size: 13px;
-      color: var(--text-second);
-      line-height: 1.55;
-    }
-
-    .card-arrow {
-      margin-top: 14px;
-      font-size: 12px;
-      color: #A32020;
-      letter-spacing: 0.06em;
-    }
-
-    /* ── NEW LINK CARDS (external) ── */
-    .ext-card {
+    /* GUIDE CARDS */
+    .guide-card {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
       background: var(--bg-card);
       border: 0.5px solid var(--border);
       border-radius: 12px;
       padding: 18px 20px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       text-decoration: none;
       color: inherit;
       transition: border-color 0.35s ease, background 0.35s ease;
     }
 
-    .ext-card:hover {
+    .guide-card:hover {
       border-color: #A32020;
     }
 
-    .ext-card:active {
+    .guide-card:active {
       opacity: 0.75;
     }
 
-    .ext-icon {
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #A32020;
-    }
-
-    .ext-icon svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .ext-body {
+    .guide-card-body {
       flex: 1;
       min-width: 0;
     }
 
-    .ext-label {
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #A32020;
-      margin-bottom: 4px;
-    }
-
-    .ext-title {
-      font-size: 15px;
-      font-weight: 600;
+    .guide-card-title {
+      font-size: 14px;
+      font-weight: 500;
       color: var(--text-primary);
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
-    .ext-desc {
+    .guide-card-desc {
       margin-top: 4px;
       font-size: 12px;
       color: var(--text-second);
       line-height: 1.5;
     }
 
-    .ext-arrow {
+    .guide-card-arrow {
       flex-shrink: 0;
+      font-size: 16px;
       color: #A32020;
-      opacity: 0.7;
-    }
-
-    .ext-arrow svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* YouTube card icon bg */
-    .yt-icon-wrap {
-      width: 40px;
-      height: 40px;
-      background: #A32020;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .yt-icon-wrap svg {
-      width: 22px;
-      height: 22px;
-      color: #ffffff;
-    }
-
-    /* YouTube channel note */
-    .yt-note {
-      margin-top: 10px;
-      font-size: 12px;
-      font-style: italic;
-      color: var(--text-third);
-      line-height: 1.55;
-      padding: 0 2px;
-    }
-
-    /* Affiliate disclosure */
-    .affiliate-note {
-      margin-top: 10px;
-      font-size: 11px;
-      font-style: italic;
-      color: var(--text-third);
-      line-height: 1.5;
+      line-height: 1;
     }
 
     footer {
@@ -330,7 +212,6 @@
 </head>
 <body class="dark">
 
-  <!-- TOPBAR -->
   <div class="topbar">
     <span class="topbar-brand">Alec Voss</span>
     <div class="topbar-right">
@@ -353,171 +234,17 @@
       <p>Safety Guides — documented facts from every investigation.</p>
     </header>
 
-    <!-- ── SECTION: SAFETY GUIDES ── -->
-    <div class="section">
-      <p class="section-label">Safety Guides</p>
+    <p class="section-label">All guides</p>
 
-      <a class="card" href="esd-guide/">
-        <div class="card-label">Electric Shock Drowning</div>
-        <div class="card-title">ESD Safety Guide</div>
-        <div class="card-desc">The invisible cause of death filed as a drowning. What every swimmer needs to know before entering fresh water near a dock.</div>
-        <div class="card-arrow">Read guide →</div>
-      </a>
-
-      <!-- ADD NEW GUIDE CARDS ABOVE THIS COMMENT -->
-    </div>
-
-    <!-- ── SECTION: RESOURCES ── -->
-    <div class="section">
-      <p class="section-label">Resources</p>
-
-      <!-- Buford Dam Water Level -->
-      <a class="ext-card"
-         href="https://water.usace.army.mil/overview/sam/locations/buford"
-         target="_blank"
-         rel="noopener noreferrer">
-        <div class="ext-icon">
-          <!-- Droplet icon -->
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2C12 2 5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2 12 2z"/>
-          </svg>
-        </div>
-        <div class="ext-body">
-          <div class="ext-title">Buford Dam — Current Water Level</div>
-          <div class="ext-desc">Army Corps of Engineers · Updated daily. Check before visiting Lake Lanier — dam releases change current patterns and underwater hazard depths without notice.</div>
-        </div>
-        <div class="ext-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17L17 7M17 7H7M17 7v10"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Watch on YouTube -->
-      <div>
-        <a class="ext-card"
-           href="https://youtube.com/@AlecVoss"
-           target="_blank"
-           rel="noopener noreferrer">
-          <div class="yt-icon-wrap">
-            <!-- YouTube play icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-          </div>
-          <div class="ext-body">
-            <div class="ext-label">Watch on YouTube</div>
-            <div class="ext-title">Why Lake Lanier Is More Dangerous Than You Think</div>
-            <div class="ext-desc">The full 35-minute documentary. Every case. Every statistic. The story behind this safety guide.</div>
-          </div>
-          <div class="ext-arrow">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
-          </div>
-        </a>
-        <p class="yt-note">Received this guide from someone? The channel covers one dangerous location every week — documented deaths, verified facts, the story the tourism industry doesn't tell you.</p>
+    <a class="guide-card" href="esd-guide/">
+      <div class="guide-card-body">
+        <div class="guide-card-title">Electric Shock Drowning — Lake Lanier</div>
+        <div class="guide-card-desc">The invisible danger in fresh water near docks. What every swimmer needs to know.</div>
       </div>
-    </div>
+      <span class="guide-card-arrow">›</span>
+    </a>
 
-    <!-- ── SECTION: SAFETY GEAR ── -->
-    <div class="section">
-      <p class="section-label">Safety Gear</p>
-
-      <!-- Card 1 -->
-      <a class="ext-card"
-         href="https://amzn.to/4eCV9A5"
-         target="_blank"
-         rel="noopener noreferrer">
-        <div class="ext-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 0 1-8 0"/>
-          </svg>
-        </div>
-        <div class="ext-body">
-          <div class="ext-title">Stearns Type III Life Jacket</div>
-          <div class="ext-desc">USCG Approved · Adult · The life jacket the Georgia DNR data says could have saved lives.</div>
-        </div>
-        <div class="ext-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17L17 7M17 7H7M17 7v10"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Card 2 -->
-      <a class="ext-card"
-         href="https://amzn.to/43VRl8c"
-         target="_blank"
-         rel="noopener noreferrer">
-        <div class="ext-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 0 1-8 0"/>
-          </svg>
-        </div>
-        <div class="ext-body">
-          <div class="ext-title">Type IV Throwable Flotation Device</div>
-          <div class="ext-desc">Required on all US motorised vessels · Throw to a swimmer in distress from shore.</div>
-        </div>
-        <div class="ext-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17L17 7M17 7H7M17 7v10"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Card 3 -->
-      <a class="ext-card"
-         href="https://amzn.to/44vgqae"
-         target="_blank"
-         rel="noopener noreferrer">
-        <div class="ext-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 0 1-8 0"/>
-          </svg>
-        </div>
-        <div class="ext-body">
-          <div class="ext-title">Blue Sea Systems Marine GFCI Outlet</div>
-          <div class="ext-desc">Marine-grade · ABYC compliant · The correct GFCI for dock electrical protection.</div>
-        </div>
-        <div class="ext-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17L17 7M17 7H7M17 7v10"/>
-          </svg>
-        </div>
-      </a>
-
-      <!-- Card 4 -->
-      <a class="ext-card"
-         href="https://amzn.to/4w8aboA"
-         target="_blank"
-         rel="noopener noreferrer">
-        <div class="ext-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 0 1-8 0"/>
-          </svg>
-        </div>
-        <div class="ext-body">
-          <div class="ext-title">Klein Tools RT250KIT Voltage Tester</div>
-          <div class="ext-desc">Non-contact tester + GFCI outlet tester · What licensed electricians use to check dock wiring.</div>
-        </div>
-        <div class="ext-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 17L17 7M17 7H7M17 7v10"/>
-          </svg>
-        </div>
-      </a>
-
-      <p class="affiliate-note">Amazon affiliate links. If you purchase through these links I may earn a small commission at no extra cost to you.</p>
-    </div>
+    <!-- ADD NEW GUIDE CARDS ABOVE THIS COMMENT -->
 
     <footer>Alec Voss · Every case documented. Every statistic verified.</footer>
   </div>
