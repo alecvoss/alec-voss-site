@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alec Voss — Electric Shock Drowning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0D0D0D;
+      color: #E8E8E8;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding: 48px 20px 80px;
+    }
+
+    .wrap {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    .back {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+      text-decoration: none;
+      margin-bottom: 40px;
+    }
+    .back:hover { color: #A32020; }
+
+    /* HEADER */
+    .site-label {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #A32020;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      color: #E8E8E8;
+      line-height: 1.2;
+    }
+
+    .accent-line {
+      width: 32px;
+      height: 3px;
+      background: #A32020;
+      margin: 16px 0;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #1A1A1A;
+    }
+
+    /* HOW IT HAPPENS */
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #A32020;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: #A32020;
+      margin-top: 2px;
+    }
+
+    .step-body h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #E8E8E8;
+      margin-bottom: 5px;
+    }
+
+    .step-body p {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* NUMBERS */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-card {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 4px;
+      padding: 20px 18px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 600;
+      color: #A32020;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* WARNING SIGNS */
+    .warning-intro {
+      background: #1A0A0A;
+      border-left: 3px solid #A32020;
+      padding: 16px 18px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: #C0C0C0;
+      line-height: 1.6;
+    }
+
+    .signal {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+
+    .signal-tag {
+      flex-shrink: 0;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #A32020;
+      background: #1A0A0A;
+      border: 1px solid #A32020;
+      padding: 3px 7px;
+      border-radius: 2px;
+      margin-top: 2px;
+    }
+
+    .signal-body h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #E8E8E8;
+      margin-bottom: 4px;
+    }
+
+    .signal-body p {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.55;
+    }
+
+    /* PROTOCOL */
+    .protocol-item {
+      border: 1px solid #1E1E1E;
+      border-radius: 4px;
+      padding: 18px 20px;
+      margin-bottom: 10px;
+    }
+
+    .protocol-item h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #E8E8E8;
+      margin-bottom: 6px;
+    }
+
+    .protocol-item p {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.55;
+    }
+
+    /* DOCK OWNER ACTIONS */
+    .action {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+
+    .action-num {
+      flex-shrink: 0;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: #A32020;
+      margin-top: 3px;
+      min-width: 48px;
+    }
+
+    .action-body h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #E8E8E8;
+      margin-bottom: 4px;
+    }
+
+    .action-body p {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.55;
+    }
+
+    /* SHARE */
+    .share-block {
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 4px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .share-block p {
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .share-btn {
+      display: inline-block;
+      background: #A32020;
+      color: #E8E8E8;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 12px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .share-btn:hover { background: #8a1a1a; }
+
+    /* FOOTER */
+    footer {
+      margin-top: 64px;
+      font-size: 12px;
+      color: #444;
+      text-align: center;
+    }
+
+    footer strong {
+      color: #666;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <a class="back" href="../">← Alec Voss</a>
+
+    <div class="site-label">Alec Voss · Safety Documentation</div>
+    <h1>Electric Shock<br>Drowning</h1>
+    <div class="accent-line"></div>
+    <p class="subtitle">The invisible cause of death filed as a drowning. What every swimmer needs to know before entering fresh water near a dock.</p>
+
+    <!-- HOW IT HAPPENS -->
+    <div class="section">
+      <div class="section-label">How it happens</div>
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>A faulty dock leaks AC current into the water</h3>
+          <p>Wiring faults or improperly grounded generators send alternating current into the water around docks and marinas. No sound. No visible sign. No smell.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Fresh water holds the current invisibly</h3>
+          <p>Unlike salt water, fresh water conducts at a level enough to paralyze muscles. The field radiates outward — strongest near the dock, weakening with distance.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>A swimmer enters the field and can no longer move</h3>
+          <p>As little as 3 volts per foot causes skeletal muscle paralysis. Arms stop. Legs stop. Cannot call for help. They sink. Cause of death on the paperwork: drowning.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE NUMBERS -->
+    <div class="section">
+      <div class="section-label">The numbers</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">3V</div>
+          <div class="stat-label">Volts per foot to paralyze a swimmer in fresh water</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">22V</div>
+          <div class="stat-label">Found in a Lake Lanier dock in 2019. No warning. Family arriving the following weekend.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="font-size:16px; padding-top:4px;">EU · Australia<br>New Zealand</div>
+          <div class="stat-label" style="margin-top:8px;">0 ESD deaths in 30 years. Ground-fault standard — mandatory.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" style="font-size:16px; padding-top:4px;">United<br>States</div>
+          <div class="stat-label" style="margin-top:8px;">No national database. Deaths filed as drowning.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WARNING SIGNS -->
+    <div class="section">
+      <div class="section-label">Warning signs</div>
+
+      <div class="warning-intro">
+        <strong style="color:#E8E8E8;">Act on this immediately</strong><br>
+        Any tingling, burning, or sudden muscle weakness near a dock is a possible ESD field. Most people swim toward the ladder. This is exactly wrong. Moving toward the source moves you deeper into the field.
+      </div>
+
+      <div class="signal">
+        <div class="signal-tag">Signal 01</div>
+        <div class="signal-body">
+          <h4>Tingling in hands, feet, or legs</h4>
+          <p>Not cold numbness. A distinct electrical sensation. Get out immediately.</p>
+        </div>
+      </div>
+
+      <div class="signal">
+        <div class="signal-tag">Signal 02</div>
+        <div class="signal-body">
+          <h4>Sudden muscle weakness</h4>
+          <p>Arms or legs feel heavy. Not fatigue. An abrupt loss of limb control.</p>
+        </div>
+      </div>
+
+      <div class="signal">
+        <div class="signal-tag">Signal 03</div>
+        <div class="signal-body">
+          <h4>Swimmer in distress near dock</h4>
+          <p>Rigid body in water. Do not jump in. Shut off power first.</p>
+        </div>
+      </div>
+
+      <div class="signal">
+        <div class="signal-tag">Signal 04</div>
+        <div class="signal-body">
+          <h4>Fish kills near a dock</h4>
+          <p>Fish floating with no explanation. ESD fields affect fish before humans.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SWIMMER SAFETY PROTOCOL -->
+    <div class="section">
+      <div class="section-label">Swimmer safety protocol</div>
+
+      <div class="protocol-item">
+        <h4>Feel tingling — swim parallel, not toward</h4>
+        <p>Exit the field by swimming parallel to the dock and away. Do not grab the ladder. Call for someone on shore to cut the power first.</p>
+      </div>
+
+      <div class="protocol-item">
+        <h4>Someone in distress — cut the power first</h4>
+        <p>Do not enter the water. Find the power disconnect box and shut it off. Then go in. The rescuer at Lake Lanier felt the current — he survived because he cut the power first.</p>
+      </div>
+
+      <div class="protocol-item">
+        <h4>Before swimming — find the power box</h4>
+        <p>Locate the main power disconnect before anyone gets in. Point it out to one person who stays on shore. The single most important step.</p>
+      </div>
+
+      <div class="protocol-item">
+        <h4>Never swim alone near docks</h4>
+        <p>An ESD victim cannot call for help. One person on shore is the only rescue mechanism available.</p>
+      </div>
+
+      <div class="protocol-item">
+        <h4>Swim only in designated zones</h4>
+        <p>Distance from powered infrastructure is your primary protection. At Lake Lanier, use only Army Corps designated swim areas.</p>
+      </div>
+    </div>
+
+    <!-- FOR DOCK OWNERS -->
+    <div class="section">
+      <div class="section-label">For dock owners</div>
+
+      <div class="action">
+        <div class="action-num">Action 01</div>
+        <div class="action-body">
+          <h4>Install a ShockIQ monitoring device</h4>
+          <p>$300–$500 installed. Alarms if voltage is detected in dock water.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">Action 02</div>
+        <div class="action-body">
+          <h4>Install ground-fault circuit interrupters</h4>
+          <p>ABYC-certified electrician. GFCIs on all dock power pedestals.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">Action 03</div>
+        <div class="action-body">
+          <h4>Annual electrical inspection</h4>
+          <p>Wiring degrades. No mandatory inspection exists in most US states.</p>
+        </div>
+      </div>
+
+      <div class="action">
+        <div class="action-num">Action 04</div>
+        <div class="action-body">
+          <h4>Post a disconnect sign</h4>
+          <p>Power disconnect must be clearly labelled and visible. Not locked.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SHARE -->
+    <div class="section">
+      <div class="section-label">Share this guide</div>
+      <div class="share-block">
+        <p>If you know someone who visits lakes with private docks — share this page with them before their next trip.</p>
+        <button class="share-btn" onclick="
+          if (navigator.share) {
+            navigator.share({ title: 'ESD Safety Guide — Alec Voss', url: window.location.href });
+          } else {
+            navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard.'));
+          }
+        ">Share this page</button>
+      </div>
+    </div>
+
+    <footer>
+      <strong>Alec Voss</strong><br>
+      Every case documented. Every statistic verified.
+    </footer>
+
+  </div>
+</body>
+</html>

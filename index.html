@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alec Voss — Safety Guides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0D0D0D;
+      color: #E8E8E8;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      padding: 48px 20px 80px;
+    }
+
+    .wrap {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 48px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: #E8E8E8;
+      text-transform: uppercase;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .accent-line {
+      width: 32px;
+      height: 3px;
+      background: #A32020;
+      margin: 14px 0 0;
+    }
+
+    .guides-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .card {
+      display: block;
+      background: #111111;
+      border: 1px solid #1E1E1E;
+      border-radius: 4px;
+      padding: 22px 24px;
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .card:hover {
+      border-color: #A32020;
+      background: #141414;
+    }
+
+    .card-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #A32020;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #E8E8E8;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #777;
+      line-height: 1.55;
+    }
+
+    .card-arrow {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #A32020;
+      letter-spacing: 0.06em;
+    }
+
+    footer {
+      margin-top: 64px;
+      font-size: 12px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Alec Voss</h1>
+      <div class="accent-line"></div>
+      <p>Safety Guides — documented facts from every investigation.</p>
+    </header>
+
+    <p class="guides-label">All guides</p>
+
+    <!-- CARD: ESD -->
+    <a class="card" href="esd-guide/">
+      <div class="card-label">Electric Shock Drowning</div>
+      <div class="card-title">ESD Safety Guide</div>
+      <div class="card-desc">The invisible cause of death filed as a drowning. What every swimmer needs to know before entering fresh water near a dock.</div>
+      <div class="card-arrow">Read guide →</div>
+    </a>
+
+    <!-- ADD NEW CARDS ABOVE THIS COMMENT -->
+
+    <footer>Alec Voss · Every case documented. Every statistic verified.</footer>
+  </div>
+</body>
+</html>
