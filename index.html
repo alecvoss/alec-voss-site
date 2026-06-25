@@ -35,11 +35,10 @@
       color: var(--text-primary);
       font-family: 'DM Sans', sans-serif;
       min-height: 100vh;
-      padding-bottom: 80px;
       transition: background 0.35s ease, color 0.35s ease;
     }
 
-    /* TOPBAR */
+    /* ── TOPBAR ── */
     .topbar {
       position: sticky;
       top: 0;
@@ -110,108 +109,205 @@
       transform: translateX(22px);
     }
 
-    /* LAYOUT */
-    .wrap {
-      max-width: 600px;
+    /* ── HERO ── */
+    .hero {
+      padding: 56px 24px 48px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 48px 20px 0;
-    }
-
-    header {
-      margin-bottom: 48px;
-    }
-
-    header h1 {
-      font-size: 28px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      color: var(--text-primary);
-      text-transform: uppercase;
-    }
-
-    header p {
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--text-second);
-      line-height: 1.5;
-    }
-
-    .accent-line {
-      width: 32px;
-      height: 3px;
-      background: #A32020;
-      margin: 14px 0 0;
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-second);
-      margin-bottom: 16px;
-      padding-bottom: 10px;
       border-bottom: 0.5px solid var(--divider);
     }
 
-    /* GUIDE CARDS */
-    .guide-card {
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #A32020;
+      margin-bottom: 16px;
+    }
+
+    .hero-name {
+      font-size: 42px;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--text-second);
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 28px;
+    }
+
+    .hero-stats {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .stat-num {
+      font-size: 22px;
+      font-weight: 600;
+      color: #A32020;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-lbl {
+      font-size: 11px;
+      color: var(--text-third);
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    /* ── GUIDE LIST ── */
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 24px 64px;
+    }
+
+    .sec-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-third);
+      margin-bottom: 14px;
+    }
+
+    .guide-card {
       background: var(--bg-card);
       border: 0.5px solid var(--border);
       border-radius: 12px;
       padding: 18px 20px;
-      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
       text-decoration: none;
-      color: inherit;
-      transition: border-color 0.35s ease, background 0.35s ease;
+      margin-bottom: 8px;
+      transition: border-color 0.2s, opacity 0.15s, background 0.35s;
     }
 
-    .guide-card:hover {
-      border-color: #A32020;
+    .guide-card:hover { border-color: var(--text-third); }
+    .guide-card:active { opacity: 0.75; }
+
+    .guide-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 600;
+      color: #A32020;
+      letter-spacing: 0.04em;
+      transition: background 0.35s, border-color 0.35s;
     }
 
-    .guide-card:active {
-      opacity: 0.75;
+    body.dark .guide-num {
+      background: #130000;
+      border: 0.5px solid #3A0000;
     }
 
-    .guide-card-body {
-      flex: 1;
-      min-width: 0;
+    body.light .guide-num {
+      background: #FDF2F2;
+      border: 0.5px solid #E8BFBF;
     }
 
-    .guide-card-title {
+    .guide-body { flex: 1; min-width: 0; }
+
+    .guide-tag {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A32020;
+      margin-bottom: 4px;
+    }
+
+    .guide-title {
       font-size: 14px;
       font-weight: 500;
       color: var(--text-primary);
-      line-height: 1.35;
+      margin-bottom: 4px;
+      line-height: 1.3;
     }
 
-    .guide-card-desc {
-      margin-top: 4px;
+    .guide-desc {
       font-size: 12px;
       color: var(--text-second);
       line-height: 1.5;
     }
 
-    .guide-card-arrow {
-      flex-shrink: 0;
-      font-size: 16px;
+    .guide-arrow {
+      font-size: 18px;
       color: #A32020;
-      line-height: 1;
+      opacity: 0.6;
+      flex-shrink: 0;
     }
 
+    /* ── COMING SOON ── */
+    .coming-card {
+      background: transparent;
+      border: 0.5px dashed var(--border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+      opacity: 0.35;
+    }
+
+    .coming-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .coming-dot-inner {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    .coming-label {
+      font-size: 12px;
+      color: var(--text-third);
+    }
+
+    /* ── FOOTER ── */
     footer {
-      margin-top: 64px;
+      margin-top: 48px;
       font-size: 12px;
       color: var(--text-second);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 480px) {
+      .hero { padding: 36px 16px 36px; }
+      .hero-name { font-size: 32px; }
+      .page { padding: 28px 16px 48px; }
+      .hero-stats { gap: 20px; }
     }
   </style>
 </head>
 <body class="dark">
 
+  <!-- TOPBAR -->
   <div class="topbar">
     <span class="topbar-brand">Alec Voss</span>
     <div class="topbar-right">
@@ -227,24 +323,51 @@
     </div>
   </div>
 
-  <div class="wrap">
-    <header>
-      <h1>Alec Voss</h1>
-      <div class="accent-line"></div>
-      <p>Safety Guides — documented facts from every investigation.</p>
-    </header>
-
-    <p class="section-label">All guides</p>
-
-    <a class="guide-card" href="esd-guide/">
-      <div class="guide-card-body">
-        <div class="guide-card-title">Electric Shock Drowning — Lake Lanier</div>
-        <div class="guide-card-desc">The invisible danger in fresh water near docks. What every swimmer needs to know.</div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Safety Documentation</div>
+    <h1 class="hero-name">Alec Voss</h1>
+    <p class="hero-desc">Long-form documentaries about America's most dangerous places — the lakes, rivers, mountains, and coastlines marketed as safe while the death toll quietly climbs. Every case documented. Every statistic verified.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">700+</div>
+        <div class="stat-lbl">Deaths · Lake Lanier<br>since 1956</div>
       </div>
-      <span class="guide-card-arrow">›</span>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-lbl">New documentary<br>every week</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-lbl">Ghost stories. Only<br>documented facts.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIDE LIST -->
+  <div class="page">
+    <p class="sec-label">Safety Guides</p>
+
+    <!-- GUIDE 01 -->
+    <a href="./esd-guide/index.html" class="guide-card">
+      <div class="guide-num">01</div>
+      <div class="guide-body">
+        <div class="guide-tag">Lakes · Georgia</div>
+        <div class="guide-title">Electric Shock Drowning — Lake Lanier</div>
+        <div class="guide-desc">The invisible danger in fresh water near docks. Warning signs, swimmer protocol, dock owner actions.</div>
+      </div>
+      <div class="guide-arrow">→</div>
     </a>
 
     <!-- ADD NEW GUIDE CARDS ABOVE THIS COMMENT -->
+
+    <!-- COMING SOON -->
+    <div class="coming-card">
+      <div class="coming-dot">
+        <div class="coming-dot-inner"></div>
+      </div>
+      <div class="coming-label">Next guide — coming soon</div>
+    </div>
 
     <footer>Alec Voss · Every case documented. Every statistic verified.</footer>
   </div>
