@@ -74,6 +74,14 @@ body { background: var(--bg); color: var(--text-primary); }
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-third);
 }
+a.topbar-brand {
+  text-decoration: none;
+  color: var(--text-third);
+  transition: color 0.2s ease;
+}
+a.topbar-brand:hover {
+  color: var(--text-primary);
+}
 .topbar-right { display: flex; align-items: center; gap: 12px; }
 .mode-label {
   font-size: 12px; font-weight: 500;
@@ -325,7 +333,7 @@ body.light .toggle-pill::after { transform: translateX(24px); }
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <span class="topbar-brand">Alec Voss</span>
+  <a href="../index.html" class="topbar-brand" style="text-decoration:none; cursor:pointer;" aria-label="Back to Alec Voss guides">Alec Voss</a>
   <div class="topbar-right">
     <span class="mode-label" id="mode-lbl">Dark</span>
     <button class="toggle-pill" id="toggle" onclick="switchMode()"
