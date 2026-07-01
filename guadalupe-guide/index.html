@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Guadalupe River flood safety guide — what every visitor needs to know before entering Flash Flood Alley. Documented by Alec Voss.">
+<meta property="og:title" content="Guadalupe River Flood Safety Guide | Alec Voss">
+<meta property="og:description" content="139 deaths. One year later. The system built around this river still has not changed.">
+<meta name="theme-color" content="#0D0D0D">
+<title>Guadalupe River Safety Guide | Alec Voss</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.33.0/dist/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  min-height: 100vh;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── DARK THEME ── */
+body.dark {
+  --bg:            #0D0D0D;
+  --bg-card:       #161616;
+  --bg-warn:       #1A0000;
+  --bg-toggle:     #0D0D0D;
+  --border:        #2A2A2A;
+  --border-warn:   #4A0000;
+  --text-primary:  #F0F0F0;
+  --text-second:   #AAAAAA;
+  --text-third:    #666666;
+  --divider:       #222222;
+  --icon-bg:       #1F0000;
+  --icon-border:   #4A0000;
+  --shield-col:    #F0F0F0;
+}
+
+/* ── LIGHT THEME ── */
+body.light {
+  --bg:            #F2F1ED;
+  --bg-card:       #FFFFFF;
+  --bg-warn:       #FEF4F4;
+  --bg-toggle:     #F2F1ED;
+  --border:        #DCDAD4;
+  --border-warn:   #E8BFBF;
+  --text-primary:  #111111;
+  --text-second:   #444444;
+  --text-third:    #888888;
+  --divider:       #D8D6D0;
+  --icon-bg:       #FDF2F2;
+  --icon-border:   #E8BFBF;
+  --shield-col:    #111111;
+}
+
+body { background: var(--bg); color: var(--text-primary); }
+
+/* ── TOPBAR ── */
+.topbar {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--bg-toggle);
+  border-bottom: 0.5px solid var(--border);
+  padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.topbar-brand {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-third);
+}
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.mode-label {
+  font-size: 12px; font-weight: 500;
+  color: var(--text-third); letter-spacing: 0.06em;
+  user-select: none;
+}
+.toggle-pill {
+  width: 52px; height: 28px; background: #A32020;
+  border-radius: 14px; position: relative;
+  cursor: pointer; border: none; outline: none; flex-shrink: 0;
+}
+.toggle-pill:focus-visible { box-shadow: 0 0 0 2px #A32020, 0 0 0 4px var(--bg); }
+.toggle-pill::after {
+  content: ''; position: absolute;
+  width: 22px; height: 22px; background: #fff;
+  border-radius: 50%; top: 3px; left: 3px;
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+body.light .toggle-pill::after { transform: translateX(24px); }
+
+/* ── HERO ── */
+.hero {
+  background: #A32020; padding: 36px 24px 30px;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; right: -24px; top: -24px;
+  width: 160px; height: 160px; border-radius: 50%;
+  background: rgba(255,255,255,0.05); pointer-events: none;
+}
+.hero-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+  margin-bottom: 10px;
+}
+.hero-title {
+  font-size: 30px; font-weight: 600; color: #fff;
+  line-height: 1.15; margin-bottom: 12px;
+}
+.hero-sub {
+  font-size: 15px; color: rgba(255,255,255,0.7);
+  line-height: 1.65; max-width: 520px;
+}
+
+/* ── PAGE ── */
+.page { max-width: 680px; margin: 0 auto; padding: 32px 20px 64px; }
+.section { margin-bottom: 36px; }
+
+.sec-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-third);
+  margin-bottom: 14px; padding-left: 2px;
+}
+.rule { height: 0.5px; background: var(--divider); margin-bottom: 32px; }
+
+/* ── CARD BASE ── */
+.card {
+  background: var(--bg-card); border: 0.5px solid var(--border);
+  border-radius: 14px; transition: background 0.35s, border-color 0.35s;
+}
+
+/* ── MECHANISM BLOCKS ── */
+.mblock {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 20px; margin-bottom: 10px;
+}
+.micon {
+  width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: #A32020;
+  background: var(--icon-bg); border: 0.5px solid var(--icon-border);
+  transition: background 0.35s, border-color 0.35s;
+}
+.mtext { flex: 1; min-width: 0; }
+.mtitle {
+  font-size: 16px; font-weight: 600; color: var(--text-primary);
+  margin-bottom: 6px; line-height: 1.35;
+}
+.mbody { font-size: 14px; color: var(--text-second); line-height: 1.65; }
+.red { color: #A32020; font-weight: 600; }
+
+/* ── STAT GRID ── */
+.stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.stat-card { padding: 20px 18px; }
+.stat-icon { font-size: 26px; color: #A32020; margin-bottom: 10px; display: block; }
+.stat-num { font-size: 40px; font-weight: 700; color: #A32020; line-height: 1; margin-bottom: 8px; }
+.stat-lbl { font-size: 13px; color: var(--text-second); line-height: 1.55; }
+
+/* ── GLOBAL COMPARISON ── */
+.global-card {
+  padding: 24px 20px; display: grid;
+  grid-template-columns: 1fr 0.5px 1fr;
+  align-items: center; gap: 0; margin-bottom: 10px;
+}
+.gcol { text-align: center; padding: 0 14px; }
+.gcol:first-child { padding-left: 0; }
+.gcol:last-child { padding-right: 0; }
+.gdivider { background: var(--border); height: 90px; transition: background 0.35s; }
+.gregion {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-third);
+  margin-bottom: 10px; line-height: 1.4;
+}
+.gicon { font-size: 28px; margin-bottom: 8px; display: block; }
+.gnum { font-size: 38px; font-weight: 700; line-height: 1; margin-bottom: 8px; }
+.gnum.zero { color: var(--text-primary); }
+.gnum.unk { color: #A32020; }
+.gsub { font-size: 12px; color: var(--text-second); line-height: 1.5; }
+
+/* ── WARNING BANNER ── */
+.warn-banner {
+  background: var(--bg-warn); border: 0.5px solid var(--border-warn);
+  border-left: 3px solid #A32020; border-radius: 0 14px 14px 0;
+  padding: 20px; margin-bottom: 10px;
+  display: flex; gap: 14px; align-items: flex-start;
+  transition: background 0.35s, border-color 0.35s;
+}
+.warn-icon { font-size: 28px; color: #A32020; flex-shrink: 0; margin-top: 1px; }
+.warn-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #A32020; margin-bottom: 7px;
+}
+.warn-text { font-size: 14px; color: var(--text-second); line-height: 1.7; }
+.warn-text strong { font-weight: 600; color: var(--text-primary); }
+
+/* ── SIGNAL GRID ── */
+.signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.sig-card { padding: 18px; }
+.sig-icon { font-size: 30px; color: #A32020; margin-bottom: 12px; display: block; }
+.sig-number {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-third); margin-bottom: 6px;
+}
+.sig-title { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 7px; line-height: 1.35; }
+.sig-body { font-size: 13px; color: var(--text-second); line-height: 1.6; }
+.sig-body strong { font-weight: 600; color: var(--text-primary); }
+
+/* ── PROTOCOL ── */
+.proto-item {
+  display: flex; gap: 16px; align-items: flex-start;
+  padding: 18px 20px; margin-bottom: 10px;
+}
+.proto-icon { font-size: 26px; color: #A32020; flex-shrink: 0; margin-top: 2px; }
+.proto-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; line-height: 1.3; }
+.proto-body { font-size: 13.5px; color: var(--text-second); line-height: 1.65; }
+.proto-body strong { font-weight: 600; color: var(--text-primary); }
+
+/* ── ACTION GRID ── */
+.action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.act-card { padding: 18px; }
+.act-icon { font-size: 28px; color: #A32020; margin-bottom: 12px; display: block; }
+.act-number {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--text-third); margin-bottom: 6px;
+}
+.act-title { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; line-height: 1.35; }
+.act-body { font-size: 13px; color: var(--text-second); line-height: 1.6; }
+.act-body strong { font-weight: 600; color: var(--text-primary); }
+
+/* ── RESOURCE LINKS ── */
+.resource-link {
+  display: flex; align-items: center; gap: 16px; padding: 18px 20px;
+  text-decoration: none; margin-bottom: 10px;
+  transition: background 0.2s, border-color 0.35s, opacity 0.15s; cursor: pointer;
+}
+.resource-link:active { opacity: 0.75; }
+.resource-icon {
+  width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; color: #A32020;
+  background: var(--icon-bg); border: 0.5px solid var(--icon-border);
+  transition: background 0.35s, border-color 0.35s;
+}
+.resource-body { flex: 1; min-width: 0; }
+.resource-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; line-height: 1.3; }
+.resource-sub { font-size: 13px; color: var(--text-second); line-height: 1.55; }
+.resource-arrow { font-size: 20px; color: #A32020; flex-shrink: 0; opacity: 0.7; }
+
+/* ── YOUTUBE CARD ── */
+.yt-card {
+  display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px;
+  text-decoration: none; margin-bottom: 14px;
+  transition: background 0.2s, border-color 0.35s, opacity 0.15s; cursor: pointer;
+}
+.yt-card:active { opacity: 0.75; }
+.yt-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: #fff; background: #A32020; flex-shrink: 0;
+}
+.yt-body { flex: 1; min-width: 0; }
+.yt-label {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #A32020; margin-bottom: 6px;
+}
+.yt-title { font-size: 15px; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; line-height: 1.35; }
+.yt-sub { font-size: 13px; color: var(--text-second); line-height: 1.55; }
+.yt-arrow { font-size: 20px; color: #A32020; flex-shrink: 0; opacity: 0.7; margin-top: 2px; }
+.yt-note {
+  font-size: 13px; color: var(--text-third); line-height: 1.65;
+  padding: 0 2px; font-style: italic;
+}
+
+/* ── SHARE BOX ── */
+.share-box {
+  background: var(--bg-card); border: 0.5px solid var(--border);
+  border-radius: 14px; padding: 24px 20px; text-align: center;
+  margin-bottom: 36px; transition: background 0.35s, border-color 0.35s;
+}
+.share-icon { font-size: 32px; color: #A32020; margin-bottom: 12px; display: block; }
+.share-title { font-size: 16px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+.share-body { font-size: 14px; color: var(--text-second); line-height: 1.65; margin-bottom: 18px; }
+.share-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #A32020; color: white; border: none; border-radius: 10px;
+  padding: 12px 24px; font-size: 14px; font-weight: 600;
+  font-family: inherit; cursor: pointer;
+  transition: opacity 0.15s; text-decoration: none;
+}
+.share-btn:active { opacity: 0.8; }
+
+/* ── FOOTER ── */
+.footer { padding: 0 20px 20px; max-width: 680px; margin: 0 auto; }
+.footer-rule { height: 0.5px; background: var(--divider); margin-bottom: 20px; transition: background 0.35s; }
+.footer-row { display: flex; justify-content: space-between; align-items: center; }
+.footer-brand { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-third); }
+.footer-note { font-size: 12px; color: var(--text-third); text-align: right; line-height: 1.5; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 400px) {
+  .hero-title { font-size: 24px; }
+  .stat-num { font-size: 34px; }
+  .gnum { font-size: 32px; }
+  .action-grid { grid-template-columns: 1fr; }
+  .signal-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 680px) {
+  .page { padding: 40px 28px 72px; }
+  .hero { padding: 44px 32px 36px; }
+  .hero-title { font-size: 34px; }
+  .topbar { padding: 16px 32px; }
+}
+
+</style>
+</head>
+
+<body class="dark">
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span class="topbar-brand">Alec Voss</span>
+  <div class="topbar-right">
+    <span class="mode-label" id="mode-lbl">Dark</span>
+    <button class="toggle-pill" id="toggle" onclick="switchMode()"
+      aria-label="Switch between dark and light mode" role="switch" aria-checked="false">
+    </button>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Alec Voss · Episode 1 · Safety Documentation</div>
+  <h1 class="hero-title">The Guadalupe River<br>Flood Safety Guide</h1>
+  <p class="hero-sub">139 people died on July 4th, 2025. One year later, the system built around this river has barely changed. Know this before you go.</p>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+
+  <!-- WHY THIS RIVER IS DIFFERENT -->
+  <div class="section">
+    <div class="sec-label">Why this river is different</div>
+
+    <div class="card mblock">
+      <div class="micon"><i class="ti ti-alert-triangle" aria-hidden="true"></i></div>
+      <div class="mtext">
+        <div class="mtitle">Limestone does not absorb rain. It sheds it.</div>
+        <div class="mbody">The Edwards Plateau — 24,000 square miles of impermeable rock — cannot hold rainfall. Water reaches the river corridor <span class="red">within hours of a storm, not days.</span></div>
+      </div>
+    </div>
+
+    <div class="card mblock">
+      <div class="micon"><i class="ti ti-ripple" aria-hidden="true"></i></div>
+      <div class="mtext">
+        <div class="mtitle">1,900 square miles drain into one corridor</div>
+        <div class="mbody">Every drop of rain anywhere in the watershed — even rain you cannot see — passes through the same river. Storm upstream, flood downstream.</div>
+      </div>
+    </div>
+
+    <div class="card mblock">
+      <div class="micon"><i class="ti ti-alert-octagon" aria-hidden="true"></i></div>
+      <div class="mtext">
+        <div class="mtitle">26 feet in 45 minutes</div>
+        <div class="mbody">On July 4th, 2025 the river rose the equivalent of <span class="red">five swimming pools stacked on top of each other</span> in less time than a television episode. 750 girls were sleeping in cabins on the bank.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- THE NUMBERS -->
+  <div class="section">
+    <div class="sec-label">The numbers</div>
+
+    <div class="stat-grid">
+      <div class="card stat-card">
+        <span class="stat-icon"><i class="ti ti-users" aria-hidden="true"></i></span>
+        <div class="stat-num">139</div>
+        <div class="stat-lbl">confirmed dead along the Guadalupe corridor, July 4th, 2025</div>
+      </div>
+      <div class="card stat-card">
+        <span class="stat-icon"><i class="ti ti-bell-ringing" aria-hidden="true"></i></span>
+        <div class="stat-num">22</div>
+        <div class="stat-lbl">National Weather Service warnings issued before the flood. The science worked.</div>
+      </div>
+    </div>
+
+    <div class="card global-card">
+      <div class="gcol">
+        <div class="gregion">Technology<br>available</div>
+        <span class="gicon"><i class="ti ti-device-watch" id="shield-icon" aria-hidden="true" style="color:#F0F0F0"></i></span>
+        <div class="gnum zero">IPAWS</div>
+        <div class="gsub">Alarms every phone in the valley instantly. No sign-up required. Never activated on July 4th.</div>
+      </div>
+      <div class="gdivider"></div>
+      <div class="gcol">
+        <div class="gregion">What was<br>actually used</div>
+        <span class="gicon"><i class="ti ti-alert-octagon" style="color:#A32020" aria-hidden="true"></i></span>
+        <div class="gnum unk">6 hrs</div>
+        <div class="gsub">Some CodeRED alerts arrived six hours after the river had already crested.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- WARNING SIGNS -->
+  <div class="section">
+    <div class="sec-label">Before you ever get in the water</div>
+
+    <div class="warn-banner">
+      <div class="warn-icon"><i class="ti ti-alert-octagon" aria-hidden="true"></i></div>
+      <div>
+        <div class="warn-label">The 48-hour rule</div>
+        <div class="warn-text">Do not enter the Guadalupe within <strong>48 hours of significant rainfall anywhere in the watershed</strong>, not just where you are standing. Rain near Hunt, Junction, or Comfort is already moving toward you even on a clear day downriver.</div>
+      </div>
+    </div>
+
+    <div class="signal-grid">
+      <div class="card sig-card">
+        <span class="sig-icon"><i class="ti ti-alert-triangle" aria-hidden="true"></i></span>
+        <div class="sig-number">Check 01</div>
+        <div class="sig-title">USGS gauge at Sattler — Station 08167500</div>
+        <div class="sig-body">Normal: 200 to 400 CFS. Above 800, experienced guides change plans. Above 1,500, <strong>do not enter.</strong></div>
+      </div>
+      <div class="card sig-card">
+        <span class="sig-icon"><i class="ti ti-droplet" aria-hidden="true"></i></span>
+        <div class="sig-number">Check 02</div>
+        <div class="sig-title">Canyon Lake pool elevation</div>
+        <div class="sig-body">Army Corps releases change current speed downstream with no local warning at the put-in.</div>
+      </div>
+      <div class="card sig-card">
+        <span class="sig-icon"><i class="ti ti-droplet" aria-hidden="true"></i></span>
+        <div class="sig-number">Check 03</div>
+        <div class="sig-title">Upstream weather — not local</div>
+        <div class="sig-body">Check Hunt and Junction, not New Braunfels. Clear skies above you means nothing about what is moving toward you from upstream.</div>
+      </div>
+      <div class="card sig-card">
+        <span class="sig-icon"><i class="ti ti-bell-ringing-off" aria-hidden="true"></i></span>
+        <div class="sig-number">Check 04</div>
+        <div class="sig-title">Do not rely on CodeRED alone</div>
+        <div class="sig-body">Opt-in only. Shown to deliver alerts hours late on July 4th. <strong>Check the gauge yourself.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- CAMPS AND CAMPING -->
+  <div class="section">
+    <div class="sec-label">If you are sending a child to camp on this river</div>
+
+    <div class="card proto-item">
+      <div class="proto-icon"><i class="ti ti-bell-ringing" aria-hidden="true"></i></div>
+      <div>
+        <div class="proto-title">Ask whether there is an automatic flood alert system</div>
+        <div class="proto-body">Not a phone tree. Not a calling chain. An <span class="red">automatic system that triggers without a human making a decision.</span> Ask for it in writing. The Camp Mystic phone tree was the primary warning system on the night 27 people died there.</div>
+      </div>
+    </div>
+
+    <div class="card proto-item">
+      <div class="proto-icon"><i class="ti ti-run" aria-hidden="true"></i></div>
+      <div>
+        <div class="proto-title">Ask for the written nighttime evacuation plan</div>
+        <div class="proto-body">Specifically ask: what happens if the river rises while campers are sleeping? A piece of paper saying <strong>"stay in your cabin until given instructions"</strong> is not an evacuation plan. That was the Camp Mystic protocol on July 4th.</div>
+      </div>
+    </div>
+
+    <div class="card proto-item">
+      <div class="proto-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+      <div>
+        <div class="proto-title">Identify high ground before nightfall</div>
+        <div class="proto-body">Know the nearest high ground from any cabin or tent site before dark. Not when water is at the door — <strong>before anyone goes to sleep.</strong></div>
+      </div>
+    </div>
+
+    <div class="card proto-item">
+      <div class="proto-icon"><i class="ti ti-swimming" aria-hidden="true"></i></div>
+      <div>
+        <div class="proto-title">Bring a real Type III PFD for tubing</div>
+        <div class="proto-body">The foam disc on a tube rental does not keep an unconscious person face-up. A Coast Guard rated <strong>NRS Ninja or Stohlquist equivalent</strong> does. Bring your own.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- WHAT STILL HAS NOT CHANGED -->
+  <div class="section">
+    <div class="sec-label">What still has not changed — one year later</div>
+
+    <div class="action-grid">
+      <div class="card act-card">
+        <span class="act-icon"><i class="ti ti-speakerphone" aria-hidden="true"></i></span>
+        <div class="act-number">Status 01</div>
+        <div class="act-title">No county siren system</div>
+        <div class="act-body">The $1M warning system was declined because sirens would disturb the peace. <strong>Still not installed.</strong></div>
+      </div>
+      <div class="card act-card">
+        <span class="act-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></span>
+        <div class="act-number">Status 02</div>
+        <div class="act-title">Camps reopened in the flood plain</div>
+        <div class="act-body">FEMA removed buildings from the official hazard designation after appeals. The river did not move with the maps.</div>
+      </div>
+      <div class="card act-card">
+        <span class="act-icon"><i class="ti ti-device-watch" aria-hidden="true"></i></span>
+        <div class="act-number">Status 03</div>
+        <div class="act-title">IPAWS still not default-activated</div>
+        <div class="act-body">The technology to alarm every phone in the valley remains available, unused, exactly as it was on July 4th.</div>
+      </div>
+      <div class="card act-card">
+        <span class="act-icon"><i class="ti ti-users" aria-hidden="true"></i></span>
+        <div class="act-number">Status 04</div>
+        <div class="act-title">NWS staffing gaps persist</div>
+        <div class="act-body">Warning coordination roles in the affected forecast offices remain a known vacancy in the regional system.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- CHECK BEFORE YOU GO -->
+  <div class="section">
+    <div class="sec-label">Check before you go</div>
+
+    <a href="https://waterdata.usgs.gov/monitoring-location/08167500"
+       target="_blank" rel="noopener noreferrer"
+       class="resource-link card"
+       aria-label="Check live USGS gauge for Guadalupe River at Sattler">
+      <div class="resource-icon"><i class="ti ti-droplet" aria-hidden="true"></i></div>
+      <div class="resource-body">
+        <div class="resource-title">Guadalupe River at Sattler — Live Gauge</div>
+        <div class="resource-sub">USGS Station 08167500 · Updated continuously · Check this before any visit. Two minutes that could change your plans.</div>
+      </div>
+      <div class="resource-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+    </a>
+
+    <a href="https://www.swf-wc.usace.army.mil/canyon/"
+       target="_blank" rel="noopener noreferrer"
+       class="resource-link card"
+       aria-label="Check Canyon Lake pool elevation and releases">
+      <div class="resource-icon"><i class="ti ti-droplet" aria-hidden="true"></i></div>
+      <div class="resource-body">
+        <div class="resource-title">Canyon Lake — Pool Elevation and Releases</div>
+        <div class="resource-sub">Army Corps of Engineers · Check before downstream activity. Releases change current conditions without local warning.</div>
+      </div>
+      <div class="resource-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+    </a>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- YOUTUBE -->
+  <div class="section">
+    <div class="sec-label">The full documentary</div>
+
+    <a href="https://youtube.com/@AlecVoss"
+       target="_blank" rel="noopener noreferrer"
+       class="yt-card card"
+       aria-label="Watch the Guadalupe River documentary on YouTube">
+      <div class="yt-icon"><i class="ti ti-brand-youtube" aria-hidden="true"></i></div>
+      <div class="yt-body">
+        <div class="yt-label">Watch on YouTube</div>
+        <div class="yt-title">Why The Guadalupe River Killed 139 People On The 4th Of July</div>
+        <div class="yt-sub">The full documentary. Every decision. Every name. The story behind this guide.</div>
+      </div>
+      <div class="yt-arrow"><i class="ti ti-arrow-up-right" aria-hidden="true"></i></div>
+    </a>
+
+    <div class="yt-note">Received this guide from someone? The channel covers one dangerous location every week, documented deaths, verified facts, the story the tourism industry does not tell you.</div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- SHARE -->
+  <div class="share-box">
+    <span class="share-icon"><i class="ti ti-share" aria-hidden="true"></i></span>
+    <div class="share-title">Share this guide</div>
+    <div class="share-body">If you know someone with a Hill Country trip or summer camp planned, send them this before they go.</div>
+    <button class="share-btn" onclick="shareGuide()" aria-label="Share this Guadalupe River safety guide">
+      <i class="ti ti-share-2" aria-hidden="true"></i>
+      Share this page
+    </button>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-rule"></div>
+  <div class="footer-row">
+    <span class="footer-brand">Alec Voss</span>
+    <span class="footer-note">Every case documented.<br>Every statistic verified.</span>
+  </div>
+</div>
+
+<script>
+  function switchMode() {
+    const isDark = document.body.classList.contains('dark');
+    document.body.classList.toggle('dark', !isDark);
+    document.body.classList.toggle('light', isDark);
+    document.getElementById('mode-lbl').textContent = isDark ? 'Light' : 'Dark';
+    document.getElementById('toggle').setAttribute('aria-checked', isDark ? 'true' : 'false');
+    const shield = document.getElementById('shield-icon');
+    if (shield) shield.style.color = isDark ? '#111111' : '#F0F0F0';
+    try { localStorage.setItem('av-mode', isDark ? 'light' : 'dark'); } catch(e) {}
+  }
+
+  (function() {
+    try {
+      const saved = localStorage.getItem('av-mode');
+      if (saved === 'light') {
+        document.body.classList.replace('dark', 'light');
+        document.getElementById('mode-lbl').textContent = 'Light';
+        document.getElementById('toggle').setAttribute('aria-checked', 'true');
+        const shield = document.getElementById('shield-icon');
+        if (shield) shield.style.color = '#111111';
+      }
+    } catch(e) {}
+  })();
+
+  document.getElementById('toggle').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchMode(); }
+  });
+
+  function shareGuide() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Guadalupe River Flood Safety Guide | Alec Voss',
+        text: '139 people died on July 4th, 2025. Know this before you go.',
+        url: window.location.href
+      }).catch(function() {});
+    } else {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        const btn = document.querySelector('.share-btn');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="ti ti-check"></i> Link copied';
+        setTimeout(function() { btn.innerHTML = orig; }, 2000);
+      }).catch(function() {
+        window.prompt('Copy this link:', window.location.href);
+      });
+    }
+  }
+</script>
+
+</body>
+</html>
